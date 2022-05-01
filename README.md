@@ -1,4 +1,3 @@
 # HanimeDesktop
-hope i can start my project
 
-if u wanna contribute the project yes...
+Yay it been 8 months and i have been finishing creating this yay
