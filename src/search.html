@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Search</title>
+    <link rel="icon" type="image/png" sizes="360x360" href="assets/img/58.png">
+    <link rel="icon" type="image/png" sizes="360x360" href="assets/img/58.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/ABeeZee.css">
+    <link rel="stylesheet" href="assets/css/Roboto.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/normalize.min.css">
+    <link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body style="background: rgb(64,64,64);">
+    <ul class="nav flex-column shadow d-flex sidebar mobile-hid" style="background: rgb(67,67,67);">
+        <li class="nav-item logo-holder">
+            <div class="text-center text-white logo py-4 mx-4">
+                <h4>HanimeDesktop<br></h4>
+                <p class="lead">Version 1.0.0</p>
+                <hr style="background: #c3c3c3;">
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link text-left text-white py-1 px-0" href="index.html"><i class="fas fa-home mx-3"></i><span class="text-nowrap mx-2">Home</span></a></li>
+        <li class="nav-item"><a class="nav-link text-left text-white py-1 px-0" href="browses.html"><i class="far fa-life-ring mx-3"></i><span class="text-nowrap mx-2">Browses</span></a></li>
+        <li class="nav-item"><a class="nav-link text-left text-white py-1 px-0" href="search.html"><i class="fas fa-search mx-3"></i><span class="text-nowrap mx-2">Search</span></a></li>
+        <li class="nav-item" data-toggle="tooltip" data-bss-tooltip="" data-placement="left" title="Soon"><a class="nav-link disabled text-left text-white py-1 px-0" href="download.html"><i class="fas fa-download mx-3"></i><span class="text-nowrap mx-2">Download</span></a></li>
+        <li class="nav-item"><a class="nav-link text-left text-white py-1 px-0" href="settings.html"><i class="fas fa-sliders-h mx-3"></i><span class="text-nowrap mx-2">Settings</span></a></li>
+        <li class="nav-item">
+            <div class="text-center text-white logo py-4 mx-4">
+                <hr style="background: #c3c3c3;">
+                <p class="lead">Made by NYT92</p><a class="btn btn-dark" role="button" href="https://github.com/nyt92" target="_blank"><i class="fab fa-github" style="margin-right: 8px;"></i>Github</a>
+            </div>
+        </li>
+    </ul>
+    <div class="container article-clean" style="padding-top: 15px;padding-left: 15px;padding-bottom: 15px;color: rgb(255,255,255);background: rgb(64,64,64);">
+        <h2>Search</h2>
+        <div class="col-auto">
+            <div class="row">
+                <div class="col m-3 cus-form">
+                    <form class="d-flex align-items-center m-2"><i class="fas fa-search d-none d-sm-block iconstyle"></i><input class="form-control form-control-sm flex-shrink-1 form-control-borderless cus-inputf" type="search" id="search" placeholder="Search Videos" required="" onkeyup="" name="q"><button class="btn btn-outline-primary btn1" type="submit">Search</button></form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h2 id="hidres">Search Results :</h2>
+        </div>
+        <div class="col">
+            <div class="row row-cols-5 d-flex justify-content-start rowing grid" id="col1"></div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/lodash.min.js"></script>
+    <script src="assets/js/slider.js"></script>
+</body>
+
+</html>
