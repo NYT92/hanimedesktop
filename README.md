@@ -4,7 +4,15 @@ Yay it been 8 months and i have been finishing creating this yay
 
 Using HaniAPI, NSPLayer, Javascript/jQuery, Electron (no reactive framework...)
 
+## Download
+
+**Windows**
+
+Go to [Release](https://github.com/NYT92/hanimedesktop/releases/tag/v1,0,0) Page to Download this Applications
+
 ## Build the Application
+
+You can build to other platform like MacOS and Linux. Before doing that make sure to edit the main.js and you can build it.
 
 Clone this repo
 > git clone github.com/nyt92/hanimedesktop.git
