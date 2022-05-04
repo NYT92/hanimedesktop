@@ -2,7 +2,11 @@
 
 Yay it been 8 months and i have been finishing creating this yay
 
-Using HaniAPI, NSPLayer, Javascript/jQuery, Electron (no reactive framework...)
+Using HaniAPI, NSPLayer, Javascript/jQuery, Electron
+
+## News
+
+I'm gonna use electron/nuxt to build this app and will be available in the next release...
 
 ## Download
 
