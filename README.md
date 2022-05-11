@@ -11,6 +11,10 @@ HanimeDesktop Build With Electron Nuxt.
 - No ADs
 - Update Checker Within the App
 
+### Download
+
+Go to [Release](https://github.com/NYT92/hanimedesktop/releases/latest) Page To Download the Application.
+
 #### Build Setup
 
 ``` bash
