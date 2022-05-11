@@ -13,7 +13,7 @@ HanimeDesktop Build With Electron Nuxt.
 
 ### Download
 
-Go to [Release](https://github.com/NYT92/hanimedesktop/releases/latest) Page To Download the Application.
+Go to [Release](https://github.com/NYT92/hanimedesktop/releases) Page To Download the Application.
 
 #### Build Setup
 
