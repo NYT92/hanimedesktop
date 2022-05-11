@@ -1,28 +1,21 @@
-# HanimeDesktop
+# app
 
-Yay it been 8 months and i have been finishing creating this yay
+> HanimeDesktop Build With Electron
 
-Using HaniAPI, NSPLayer, Javascript/jQuery, Electron
+#### Build Setup
 
-## News
+``` bash
+# install dependencies
+yarn install
 
-I'm gonna use electron/nuxt to build this app and will be available in the next release...
+# serve app with hot reload
+yarn dev
 
-## Download
+# build electron application for production
+yarn build
 
-**Windows**
+```
 
-Go to [Release](https://github.com/NYT92/hanimedesktop/releases/tag/v1,0,0) Page to Download this Applications
+---
 
-## Build the Application
-
-You can build to other platform like MacOS and Linux. Before doing that make sure to edit the main.js and you can build it.
-
-Clone this repo
-> git clone github.com/nyt92/hanimedesktop.git
-
-Install the dependencies
-> npm i
-
-Run the build
-> npm run make
+This project was generated with [electron-nuxt](https://github.com/michalzaq12/electron-nuxt) v1.8.1 using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://github.com/michalzaq12/electron-nuxt/blob/master/README.md).
