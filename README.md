@@ -1,6 +1,15 @@
-# app
+# Hanime Desktop
 
-> HanimeDesktop Build With Electron
+HanimeDesktop Build With Electron Nuxt.  
+
+### Features
+
+- Fully Functional Application with Landing, Watch, Browse, Search and More
+- Using [HaniAPI](https://github.com/nyt92/hanime-python-api) 
+- Bypass Cloudflare Restriction
+- Working Video Player Embeded From [nsplayer](https://player.nscdn.ml)
+- No ADs
+- Update Checker Within the App
 
 #### Build Setup
 
@@ -18,4 +27,7 @@ yarn build
 
 ---
 
-This project was generated with [electron-nuxt](https://github.com/michalzaq12/electron-nuxt) v1.8.1 using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://github.com/michalzaq12/electron-nuxt/blob/master/README.md).
+### Credit
+
+Powered By [electron-nuxt](https://github.com/michalzaq12/electron-nuxt)  
+API By Me [HaniAPI](https://github.com/nyt92/hanime-python-api)
