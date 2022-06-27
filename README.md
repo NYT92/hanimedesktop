@@ -1,5 +1,7 @@
 # Hanime Desktop
 
+[NOTICE] Our Backend domain is failed to connect to .ml DNS. Please wait for a few days.
+
 HanimeDesktop Build With Electron Nuxt.  
 
 ### Features
