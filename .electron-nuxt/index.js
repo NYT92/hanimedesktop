@@ -1,3 +1,4 @@
+
 const path = require('path')
 const webpack = require('webpack')
 const electron = require('electron')
