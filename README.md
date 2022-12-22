@@ -1,6 +1,6 @@
 # Hanime Desktop
 
-[NOTICE] Our Backend domain is working...
+[NOTICE] Since the new API v5.0 is out, watch page will no longer work because /getVideo/player is deprecated.
 
 HanimeDesktop Build With Electron Nuxt.  
 
