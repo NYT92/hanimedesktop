@@ -8,6 +8,7 @@ HanimeDesktop Build With Electron Nuxt.
 
 - Fully functional application with landing, watch, browse, search and more
 - Using HaniAPI version v5.0
+- Watch Hanime content using intergrated video player with [Artplayer](https://artplayer.org)
 - Support authentication
 - Can watch 1080p video within the app (HANIME ACCOUNT WITH PREMIUM ONLY)
 - Config and watch hanime video using VLC
