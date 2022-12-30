@@ -1,7 +1,26 @@
-p{
-    color: white;
+body {
+  background-color: #2c2c2c
 }
 
-a{
-    text-decoration: inherit;
+p {
+  color: white;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #2c2c2c;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #696969;
+  border-radius: 4px;
+  border: 0px solid #ffffff;
 }

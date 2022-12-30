@@ -1,71 +1,75 @@
 <template>
-  <v-app>
-    <v-row>
-      <v-col>
-        <v-tabs v-model="tab" icons-and-text>
-          <v-tabs-slider></v-tabs-slider>
-          <v-tab href="#tab-1">
-            Tags
-            <v-icon>mdi-tag</v-icon>
-          </v-tab>
-          <v-tab href="#tab-2">
-            Brands
-            <v-icon>mdi-office-building</v-icon>
-          </v-tab>
-        </v-tabs>
-        <v-tabs-items v-model="tab">
-          <v-tab-item value="tab-1">
-            <v-card>
-              <v-row class="ma-2 flex grid justify-center">
-                <div v-for="data in browse.tags" :key="data.id">
-                  <router-link :to="'/browse/tags/' + data.text">
-                    <div class="media-container4">
-                      <v-img
-                        :src="data.tall_image_url"
-                        :alt="data.text"
-                        width="100%"
+  <div>
+    <v-tabs v-model="tab" icons-and-text>
+      <v-tabs-slider></v-tabs-slider>
+      <v-tab href="#tag">
+        Tags
+        <v-icon>mdi-tag</v-icon>
+      </v-tab>
+      <v-tab href="#brand">
+        Brands
+        <v-icon>mdi-office-building</v-icon>
+      </v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="tab">
+      <v-tab-item value="tag">
+        <v-card>
+          <div class="grid-ctn">
+            <div v-for="data in browse.tags" :key="data.id">
+              <router-link :to="'/browse/tags/' + data.text">
+                <div class="media-container4">
+                  <v-img
+                    :src="data.tall_image_url"
+                    :alt="data.text"
+                    width="100%"
+                  >
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
                       >
-                        <template v-slot:placeholder>
-                          <v-row
-                            class="fill-height ma-0"
-                            align="center"
-                            justify="center"
-                          >
-                            <v-progress-circular
-                              indeterminate
-                              color="grey lighten-5"
-                            ></v-progress-circular>
-                          </v-row>
-                        </template>
-                      </v-img>
-                      <p>{{ data.text }}</p>
-                      <span style="color: gray;"><v-icon>mdi-video</v-icon> {{ data.count }}</span>
-                    </div>
-                  </router-link>
+                        <v-progress-circular
+                          indeterminate
+                          color="grey lighten-5"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
+                  </v-img>
+                  <p>{{ data.text }}</p>
+                  <span style="color: gray"
+                    ><v-icon>mdi-video</v-icon> {{ data.count }}</span
+                  >
                 </div>
-              </v-row>
-            </v-card>
-          </v-tab-item>
-          <v-tab-item value="tab-2">
-            <v-card>
-              <v-card>
-                <v-row class="ma-2 flex grid justify-center"> 
-                  <div v-for="data in browse.brands" :key="data.id">
-                  <router-link :to="'/browse/brands/' + data.slug">
-                    <div class="media-container4">
-                      <p>{{ data.title }}</p>
-                      <span style="color: gray;"><v-icon>mdi-video</v-icon> {{ data.count }}</span>
-                    </div>
-                  </router-link>
-                </div>
-              </v-row>
-              </v-card>
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
-      </v-col>
-    </v-row>
-  </v-app>
+              </router-link>
+            </div>
+          </div>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item value="brand">
+        <v-card>
+          <v-list>
+            <v-list-item-group color="primary">
+              <v-list-item
+                v-for="data in browse.brands"
+                :key="data.id"
+                :to="'/browse/brands/' + data.slug"
+              >
+                <v-list-item-content>
+                  <v-list-item-title v-text="data.title"></v-list-item-title>
+                  <v-list-item-subtitle
+                    ><span style="color: gray"
+                      ><v-icon>mdi-video</v-icon> {{ data.count }}</span
+                    ></v-list-item-subtitle
+                  >
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
+  </div>
 </template>
 
 <script>
@@ -88,11 +92,11 @@ export default {
 </script>
 
 <style>
-.row {
+.grid-ctn {
+  display: grid;
   align-items: baseline;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 1 auto;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
 }
 
 .media-container4 {

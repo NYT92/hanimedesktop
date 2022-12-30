@@ -1,62 +1,55 @@
 <template>
   <div>
-    <v-app dark>
-      <div>
-        <div class="ma-5">
-          <v-col>
-            <h2>Recently Uploaded</h2>
-            <v-row>
-              <v-col class="media-scrolling snaps-inline">
-                <div v-for="data in recent" :key="data.id">
-                  <router-link :to="'/watch/' + data.slug">
-                    <div class="media-container">
-                      <img :src="data.cover_url" :alt="data.slug" />
-                      <p>{{ data.name }}</p>
-                    </div>
-                  </router-link>
-                </div>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col>
-            <h2>Newely Uploaded</h2>
-            <v-row>
-              <v-col class="media-scrolling snaps-inline">
-                <div v-for="data in newest" :key="data.id">
-                  <router-link :to="'/watch/' + data.slug">
-                    <div class="media-container">
-                      <img :src="data.cover_url" :alt="data.slug" />
-                      <p>{{ data.name }}</p>
-                    </div>
-                  </router-link>
-                </div>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col>
-            <h2>Trending</h2>
-            <v-row>
-              <v-col class="media-scrolling snaps-inline">
-                <div v-for="data in trend" :key="data.id">
-                  <router-link :to="'/watch/' + data.slug">
-                    <div class="media-container">
-                      <img :src="data.cover_url" :alt="data.slug" />
-                      <p>{{ data.name }}</p>
-                    </div>
-                  </router-link>
-                </div>
-              </v-col>
-            </v-row>
-          </v-col>
+    <div v-if="$fetchState.pending" class="d-flex justify-center align-center" style="height:100vh;">
+      <v-progress-circular indeterminate size="50" color="primary"></v-progress-circular>
+    </div>
+    <div
+      v-else-if="$fetchState.error"
+      style="display: grid; place-items: center"
+    >
+      Error
+    </div>
+    <div v-else>
+      <div class="ma-5">
+        <h2 class="ma-5">Recently Uploaded</h2>
+        <div class="media-scrolling snaps-inline">
+          <div v-for="data in recent.results" :key="data.id">
+            <router-link :to="'/watch/' + data.slug">
+              <div class="media-container">
+                <img :src="data.cover_url" :alt="data.slug" />
+                <p>{{ data.name }}</p>
+              </div>
+            </router-link>
+          </div>
+        </div>
+        <h2 class="ma-5">Newely Uploaded</h2>
+        <div class="media-scrolling snaps-inline">
+          <div v-for="data in newest.results" :key="data.id">
+            <router-link :to="'/watch/' + data.slug">
+              <div class="media-container">
+                <img :src="data.cover_url" :alt="data.slug" />
+                <p>{{ data.name }}</p>
+              </div>
+            </router-link>
+          </div>
+        </div>
+        <h2 class="ma-5">Trending</h2>
+        <div class="media-scrolling snaps-inline">
+          <div v-for="data in trend.results" :key="data.id">
+            <router-link :to="'/watch/' + data.slug">
+              <div class="media-container">
+                <img :src="data.cover_url" :alt="data.slug" />
+                <p>{{ data.name }}</p>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
-    </v-app>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
@@ -65,43 +58,19 @@ export default {
       trend: null,
     };
   },
-  /*
-  async asyncData() {
-    try {
-      const recent = await axios.get("https://v4hani.nsdev.ml/getLanding/recent");
-      const newest = await axios.get("https://v4hani.nsdev.ml/getLanding/newest");
-      const trend = await axios.get("https://v4hani.nsdev.ml/getLanding/trending");
-      return {
-        recent: recent.data.results,
-        newest: newest.data.results,
-        trend: trend.data.results,
-      };
-    } catch (e) {
-      console.log(e);
-    }
-  }, */
-  async mounted() {
-    await axios
-      .get("https://v4hani.nsdev.ml/getLanding/recent")
-      .then((res) => {
-        this.recent = res.data.results;
-      })
+  async fetch() {
+    this.recent = await fetch("https://hani.nsdev.ml/getLanding/recent")
+      .then((res) => res.json())
       .catch((err) => {
         console.log(err);
       });
-    await axios
-      .get("https://v4hani.nsdev.ml/getLanding/newest")
-      .then((res) => {
-        this.newest = res.data.results;
-      })
+    this.newest = await fetch("https://hani.nsdev.ml/getLanding/newest")
+      .then((res) => res.json())
       .catch((err) => {
         console.log(err);
       });
-    await axios
-      .get("https://v4hani.nsdev.ml/getLanding/trending")
-      .then((res) => {
-        this.trend = res.data.results;
-      })
+    this.trend = await fetch("https://hani.nsdev.ml/getLanding/trending")
+      .then((res) => res.json())
       .catch((err) => {
         console.log(err);
       });
@@ -118,7 +87,7 @@ export default {
   padding: var(--_spacer) var(--_spacer) var(--_spacer);
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 .snaps-inline {

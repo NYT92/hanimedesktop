@@ -1,56 +1,47 @@
 <template>
-  <v-app>
-    <v-row class="ma-5">
-      <v-col>
-        <h2>Search</h2>
-        <div class="col m-3 cus-form">
-          <form class="d-flex align-items-center m-2">
-            <v-text-field
-              v-model="search"
-              :error-messages="searchErrors"
-              label="Search Video"
-              required
-              @input="$v.search.$touch()"
-              @blur="$v.search.$touch()"
-            ></v-text-field>
-            <v-btn @click="submit" :loading="loading"
-              ><v-icon>mdi-magnify</v-icon>Search</v-btn
-            >
-          </form>
-        </div>
-        <div>
-          <h2>Results</h2>
-          <v-row class="ma-4 flex grid">
-            <div v-for="data in results" :key="data.id">
-              <router-link :to="'/watch/' + data.slug">
-                <div class="media-container2">
-                  <v-img
-                    :src="data.cover_url"
-                    :alt="data.slug"
-                    width="100%"
+  <div class="ma-10 d-flex justify-center align-center flex-column">
+    <div class="col">
+      <h2 class="mb-2">Search</h2>
+      <form class="d-flex align-center">
+        <v-text-field
+          v-model="search"
+          prepend-icon="mdi-magnify"
+          :error-messages="searchErrors"
+          label="Search hentai videos"
+          required
+          @keyup.enter="submit"
+        ></v-text-field>
+        <v-btn class="ml-5" @click="submit" :loading="loading">
+          <v-icon>mdi-magnify</v-icon>
+          Search
+        </v-btn>
+      </form>
+    </div>
+    <div v-if="results">
+      <h2>Results</h2>
+      <v-row class="ma-5 flex justify-center">
+        <div v-for="data in results" :key="data.id">
+          <router-link :to="'/watch/' + data.slug">
+            <div class="media-container">
+              <v-img :src="data.cover_url" :alt="data.slug" width="100%">
+                <template v-slot:placeholder>
+                  <v-row
+                    class="fill-height ma-0 d-flex justify-center align-center"
                   >
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-progress-circular
-                          indeterminate
-                          color="grey lighten-5"
-                        ></v-progress-circular>
-                      </v-row>
-                    </template>
-                  </v-img>
-                  <p>{{ data.name }}</p>
-                </div>
-              </router-link>
+                    <v-progress-circular
+                      indeterminate
+                      color="grey lighten-5"
+                    ></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+              <p>{{ data.name }}</p>
             </div>
-          </v-row>
+          </router-link>
         </div>
-      </v-col>
-    </v-row>
-  </v-app>
+      </v-row>
+    </div>
+  </div>
 </template>
 <script>
 import { validationMixin } from "vuelidate";
@@ -72,7 +63,7 @@ export default {
     searchErrors() {
       const errors = [];
       if (!this.$v.search.$dirty & !this.$v.search.$empty) return errors;
-      !this.$v.search.required && errors.push("Search is required.");
+      !this.$v.search.required && errors.push("query is required.");
       return errors;
     },
   },
@@ -82,7 +73,7 @@ export default {
       this.loading = true;
       if (!this.$v.$invalid) {
         axios
-          .get(`https://hani.nsdev.ml/search/req?q=${this.search}`)
+          .get(`https://hani.nsdev.ml/search?q=${this.search}`)
           .then((res) => {
             this.loading = false;
             this.results = res.data.results;
@@ -97,34 +88,31 @@ export default {
 };
 </script>
 <style>
-.row {
-  align-items: baseline;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 1 auto;
-}
-
-.media-container2 {
+.media-container {
   height: 100%;
-  width: 10.5rem;
+  width: 12.2rem;
   display: flex;
   padding: 1rem;
-  margin: 0.3rem;
   box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
   transition: 0.3s;
   align-items: center;
   flex-direction: column;
   background-color: #393939;
   padding-top: 1rem;
-  border-radius: 4px;
 }
 
-.media-container2:hover {
+.media-container:hover {
   box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.3);
   background-color: rgb(74, 74, 74);
 }
 
-.media-container2 > p {
+.media-container > img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.media-container > p {
   margin-top: 16px;
   margin-bottom: 0px;
   text-decoration: initial;

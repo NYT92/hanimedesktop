@@ -1,6 +1,6 @@
 {
   "name": "hanimedesktop",
-  "version": "1.1.0beta",
+  "version": "1.1.0",
   "description": "HanimeDesktop Build With Electron",
   "main": "./dist/main/index.js",
   "scripts": {
@@ -38,8 +38,11 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "artplayer": "^4.5.10",
     "axios": "^0.27.2",
     "electron-context-menu": "^3.1.2",
+    "hls.js": "^1.2.7",
     "vuelidate": "^0.7.7"
   }
 }

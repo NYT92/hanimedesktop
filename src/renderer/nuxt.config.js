@@ -1,13 +1,5 @@
-/**
- * By default, Nuxt.js is configured to cover most use cases.
- * This default configuration can be overwritten in this file
- * @link {https://nuxtjs.org/guide/configuration/}
- */
-
-
 module.exports = {
-  ssr: true,
-  target: "server",
+  ssr: false,
   head: {
     title: 'Hanime Desktop - Stream Hentai Via Desktop',
     meta: [{ charset: "utf-8" },]
@@ -16,6 +8,11 @@ module.exports = {
     color: 'white',
     height: '2px'
   },
+  loadingIndicator: {
+    name: 'circle',
+    color: '#ffffff',
+    background: '2c2c2c'
+  }, 
   plugins: [
     { ssr: true, src: '@/plugins/icons.js' },
   ],

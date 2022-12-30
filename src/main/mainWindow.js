@@ -19,6 +19,8 @@ function UpsertKeyValue(obj, keyToChange, value) {
   }
   obj[keyToChange] = value;
 }
+global.winHandler = winHandler;
+
 winHandler.onCreated(_browserWindow => {
   winHandler.loadPage('/')
   _browserWindow.webContents.session.webRequest.onBeforeSendHeaders(
@@ -40,8 +42,6 @@ winHandler.onCreated(_browserWindow => {
     e.preventDefault();
     require('electron').shell.openExternal(url);
   });
-  // Or load custom url
-  // _browserWindow.loadURL('https://google.com')
 })
 
 

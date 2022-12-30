@@ -44,7 +44,7 @@ const macOS = {
 module.exports = {
   productName: 'Hanime Desktop',
   appId: 'com.nsdev.hanimedesktop',
-  artifactName: 'setup-${version}.${ext}',
+  artifactName: 'hanimedesktop-setup-${version}.${ext}',
   directories: {
     output: 'build'
   },

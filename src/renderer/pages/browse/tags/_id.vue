@@ -1,30 +1,30 @@
 <template>
-  <v-app>
-    <v-row class="ma-5">
-      <h2>Tags : {{ this.$route.params.id }}</h2>
-      <div>
-        <v-row class="ma-4 flex grid">
-          <div v-for="data in atg" :key="data.id">
-            <div class="media-container3">
-              <router-link :to="'/watch/' + data.slug">
-                <img
-                  style="width: 100%; object-fit: cover; border-radius: 4px"
-                  :src="data.cover_url"
-                  :alt="data.slug"
-                />
-                <p>{{ data.name }}</p>
-              </router-link>
-            </div>
-          </div>
-        </v-row>
-      </div>
-      <div>
-        <v-btn color="primary" disabled >Previous</v-btn>
-        <v-btn color="primary" disabled >Next</v-btn>
-        <span>Coming Soon</span>
+  <div v-if="atg" class="ma-5">
+    <h2>Tags : {{ this.$route.params.id }}</h2>
+    <v-row class="ma-4 flex justify-center">
+      <div v-for="data in atg.videos" :key="data.id">
+        <div class="media-container3">
+          <router-link :to="'/watch/' + data.slug">
+            <img
+              style="width: 100%; object-fit: cover; border-radius: 4px"
+              :src="data.cover_url"
+              :alt="data.slug"
+            />
+            <p>{{ data.name }}</p>
+          </router-link>
+        </div>
       </div>
     </v-row>
-  </v-app>
+    <div>
+      <v-pagination
+        v-model="page"
+        class="my-4"
+        :length="atg.page"
+        :total-visible="10"
+        @input="onPageChange"
+      ></v-pagination>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -34,53 +34,38 @@ export default {
   data() {
     return {
       atg: null,
+      page: 1,
     };
+  },
+  async mounted() {
+    await this.onPageChange();
   },
   methods: {
-    back() {
-      this.$router.go(-1);
+    getTag: async function () {
+      const { data } = await axios.get(
+        `https://hani.nsdev.ml/browse/hentai-tags/${this.$route.params.id}/${this.page}`
+      );
+      this.atg = data;
+    },
+    onPageChange() {
+      this.getTag();
     },
   },
-  mounted() {
-    axios
-      .get(`https://hani.nsdev.ml/browse/hentai-tags/${this.$route.params.id}/${this.$route.query.p}`)
-      .then((response) => {
-        this.atg = response.data.videos;
-      });
-  },
-  /*
-  async asyncData({ params, query }) {
-    const tg = await axios.get(
-      `https://v4hani.nsdev.ml/browse/hentai-tags/${params.id}/${query.p}`
-    );
-    return {
-      atg: tg.data.videos,
-    };
-  },
-  */
 };
 </script>
 
 <style>
-.row {
-  align-items: baseline;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 1 auto;
-}
-
 .media-container3 {
   height: 100%;
-  width: 10rem;
+  width: 12.2rem;
   display: flex;
   padding: 1rem;
-  margin: 0.5rem;
   box-shadow: 5px 5px 10px 0px rgba(18, 18, 18, 0.1);
   transition: 0.3s;
+  align-items: center;
+  flex-direction: column;
   background-color: #393939;
   padding-top: 1rem;
-  border-radius: 4px;
 }
 
 .media-container3:hover {

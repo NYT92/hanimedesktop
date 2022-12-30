@@ -1,19 +1,21 @@
 <template>
-  <v-row class="ma-4 flex-column">
-    <v-col>
-      <h1 v-if="error.statusCode === 404">
+  <div class="ctn my-15">
+    <div v-if="error.statusCode === 404">
+      <h2>
         <v-icon>mdi-information</v-icon>
-        404 : Page Not Found
-      </h1>
-      <h1 v-else="error.statusCode === 500">
+        Page not found...
+      </h2>
+      <p>{{ error.message }}</p>
+    </div>
+    <div v-else>
+      <h2>
         <v-icon>mdi-information</v-icon>
-        500 : Internal Server Error
-      </h1>
-    </v-col>
-    <v-col>
-      <v-btn to="/"> Home </v-btn>
-    </v-col>
-  </v-row>
+        Application error
+      </h2>
+      <p>{{ error.message }}</p>
+    </div>
+    <v-btn to="/"> Home </v-btn>
+  </div>
 </template>
 
 <script>
@@ -21,3 +23,9 @@ export default {
   props: ["error"],
 };
 </script>
+<style>
+.ctn {
+  display: grid;
+  place-items: center;
+}
+</style>
