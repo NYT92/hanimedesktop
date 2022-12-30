@@ -6,12 +6,13 @@ HanimeDesktop Build With Electron Nuxt.
 
 ### Features
 
-- Fully Functional Application with Landing, Watch, Browse, Search and More
-- Using [HaniAPI](https://github.com/nyt92/hanime-python-api) 
-- Bypass Cloudflare Restriction
-- Working Video Player Embeded From [nsplayer](https://player.nscdn.ml)
-- No ADs
-- Update Checker Within the App
+- Fully functional application with landing, watch, browse, search and more
+- Using HaniAPI version v5.0
+- Support authentication
+- Can watch 1080p video within the app (HANIME ACCOUNT WITH PREMIUM ONLY)
+- Config and watch hanime video using VLC
+- Checked update every new releases of the app
+
 
 ### Download
 
